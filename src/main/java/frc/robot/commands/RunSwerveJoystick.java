@@ -2,24 +2,25 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Chassis;
 
 import static frc.robot.RobotContainer.mController;
 
 
-public class RunSwerveJoystick extends Command {
+public class RunSwerveJoystick extends CommandBase {
 
     Chassis mChassis;
 
     public RunSwerveJoystick(Chassis chassis) {
-        this.requires(chassis);
         mChassis = chassis;
+        this.addRequirements(mChassis);
     }
 
     private SlewRateLimiter limiter = new SlewRateLimiter(2.5);
 
     @Override
-    protected void execute() {
+    public void execute() {
         try {
             mChassis.runSwerve(mController.getRawAxis(1),
                     -mController.getRawAxis(0),
@@ -31,7 +32,7 @@ public class RunSwerveJoystick extends Command {
     }
 
     @Override
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return false;
     }
 }

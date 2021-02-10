@@ -4,15 +4,15 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.RunSwerveJoystick;
 import frc.robot.math.SwerveCalcs;
 import frc.robot.modules.SwerveCombo;
 
 
-import static frc.robot.RobotContainer.mChassis;
 import static frc.robot.math.SwerveCalcs.*;
 
-public class Chassis extends Subsystem {
+public class Chassis extends SubsystemBase {
     
 
     WPI_TalonFX drive0 = new WPI_TalonFX(3);
@@ -30,6 +30,10 @@ public class Chassis extends Subsystem {
     SwerveCombo comboFR = new SwerveCombo(drive2, axis2, 2);
     SwerveCombo comboBR = new SwerveCombo(drive3, axis3, 3);
 
+    public Chassis() {
+        System.out.println("Chassis Created");
+    }
+    
 
 
     public void runSwerve(double fwd, double str, double rot) throws Exception {
@@ -45,8 +49,4 @@ public class Chassis extends Subsystem {
     }
 
 
-    @Override
-    protected void initDefaultCommand() {
-        setDefaultCommand(new RunSwerveJoystick(mChassis));
-    }
 }
