@@ -27,6 +27,7 @@ public class RunSwerveJoystick extends Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Trying to drive");
     }
 
     @Override
