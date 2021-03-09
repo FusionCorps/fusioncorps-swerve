@@ -79,8 +79,10 @@ public class SwerveCombo {
         this.driveMotor.set(ControlMode.Velocity, speed);
         if (speed < 360) {
             this.axisMotor.set(ControlMode.Velocity, 0);
+            this.driveMotor.set(ControlMode.Velocity, 0);
         } else {
             this.axisMotor.set(ControlMode.Position, angleFinal);
+            this.driveMotor.set(ControlMode.Velocity, speed);
         }
     }
 
