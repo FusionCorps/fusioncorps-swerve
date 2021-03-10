@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,8 +33,21 @@ public class Chassis extends SubsystemBase {
     SwerveCombo comboFR = new SwerveCombo(axis2, drive2, 2);
     SwerveCombo comboBR = new SwerveCombo(axis3, drive3, 3);
 
+    public static AHRS ahrs;
+
+
+
     public Chassis() {
         System.out.println("Chassis Created");
+
+        ahrs = new AHRS(SPI.Port.kMXP);
+        ahrs.calibrate();
+    }
+
+
+
+    public void resetHeading() {
+        ahrs.reset();
     }
     
 
