@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ec36303-2acc-4cb2-843f-fc2e49cad88d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/ResetGyro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/RunFieldCentricSwerve.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/TestCommandExecutable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/RobotContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Chassis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Chassis.java" afterDir="false" />
-    </list>
+    <list default="true" id="8ec36303-2acc-4cb2-843f-fc2e49cad88d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +19,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="">
           <activation />
         </task>
         <projects_view>
@@ -80,7 +76,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager" selected="Gradle.fusioncorps-swerve [deploy]">
+  <component name="RunManager" selected="Gradle.fusioncorps-swerve [simulateExternalJava]">
     <configuration name="fusioncorps-swerve [RobotBuilder]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -97,7 +93,9 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="fusioncorps-swerve [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -116,7 +114,9 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="fusioncorps-swerve [deploy]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -135,7 +135,30 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="fusioncorps-swerve [simulateExternalJava]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="simulateExternalJava" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="fusioncorps-swerve [vendordep]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -143,23 +166,26 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="vendordep" />
+            <option value="simulateExternalJava" />
           </list>
         </option>
-        <option name="vmOptions" />
+        <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Gradle.fusioncorps-swerve [RobotBuilder]" />
       <item itemvalue="Gradle.fusioncorps-swerve [build]" />
+      <item itemvalue="Gradle.fusioncorps-swerve [simulateExternalJava]" />
       <item itemvalue="Gradle.fusioncorps-swerve [deploy]" />
       <item itemvalue="Gradle.fusioncorps-swerve [vendordep]" />
     </list>
@@ -169,7 +195,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -183,68 +209,15 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612995443626">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1612995443626" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1614903700011">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614903700011" />
-    <state width="661" height="179" key="GridCell.Tab.0.bottom" timestamp="1615337535294">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="661" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1615337535294" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612998985318" />
-    <state width="661" height="179" key="GridCell.Tab.0.center" timestamp="1615337535294">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="661" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1615337535294" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612998985317" />
-    <state width="661" height="179" key="GridCell.Tab.0.left" timestamp="1615337535294">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="661" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1615337535294" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612998985317" />
-    <state width="661" height="179" key="GridCell.Tab.0.right" timestamp="1615337535294">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="661" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1615337535294" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612998985318" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1612998665788">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612998665788" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1612998665788">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1612998665788" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1612998665787">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1612998665787" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1612998665788">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1612998665788" />
-    <state x="163" y="0" key="SettingsEditor" timestamp="1615332784318">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1615332784318" />
-    <state x="183" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1612996827025" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1612995236300">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1612995236300" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1615332781923">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615332781923" />
-    <state x="383" y="128" width="672" height="600" key="search.everywhere.popup" timestamp="1615332778023">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="383" y="128" width="672" height="600" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1615332778023" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1612996920932" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
