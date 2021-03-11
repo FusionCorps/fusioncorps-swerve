@@ -18,23 +18,25 @@ public class RunFieldCentricSwerve extends CommandBase {
         this.addRequirements(mChassis);
     }
 
-    private SlewRateLimiter limiter = new SlewRateLimiter(2.5);
+    private SlewRateLimiter fwdLimiter = new SlewRateLimiter(4.5);
+    private SlewRateLimiter strLimiter = new SlewRateLimiter(4.5);
+    private SlewRateLimiter rotLimiter = new SlewRateLimiter(4.5);
     public double angle = mChassis.ahrs.getAngle();
 
     @Override
     public void execute() {
 
-        angle = mChassis.ahrs.getAngle() % 360;
+        angle = -(mChassis.ahrs.getAngle() % 360);
 
         System.out.println(angle);
 
 
         try {
-            mChassis.runSwerve(mController.getRawAxis(1)*cos(angle/360*(2*PI)) + mController.
-                            getRawAxis(0)*sin(angle/360*(2*PI)),
-                    mController.getRawAxis(1)*sin(angle/360*(2*PI)) - mController.
-                            getRawAxis(0)*cos(angle/360*(2*PI)),
-                    mController.getRawAxis(4));
+            mChassis.runSwerve(fwdLimiter.calculate(mController.getRawAxis(1)*cos(angle/360*(2*PI)) + mController.
+                            getRawAxis(0)*sin(angle/360*(2*PI))),
+                    strLimiter.calculate(mController.getRawAxis(1)*sin(angle/360*(2*PI)) - mController.
+                            getRawAxis(0)*cos(angle/360*(2*PI))),
+                    rotLimiter.calculate(mController.getRawAxis(4)));
         } catch (Exception e) {
             e.printStackTrace();
         }

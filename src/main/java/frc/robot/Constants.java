@@ -5,11 +5,11 @@ public class Constants {
     public static double TRACK_WIDTH_METERS = 0.3429;
     public static double TRACK_LENGTH_METERS = 0.3429;
 
-    public static double SWERVE_FORWARD_SPEED_MAX = 2.8;
-    public static double SWERVE_STRAFE_SPEED_MAX = 2.8;
-    public static double SWERVE_ROT_SPEED_MAX = 2.0;
+    public static double SWERVE_FORWARD_SPEED_MAX = 3.2;
+    public static double SWERVE_STRAFE_SPEED_MAX = 3.2;
+    public static double SWERVE_ROT_SPEED_MAX = 6.0;
 
-    public static double MAX_SPEED = 2.8;
+    public static double MAX_SPEED = 3.2;
 
     public static double AXIS_kF = 0.0;
     public static double AXIS_kP = 0.15;
