@@ -77,7 +77,7 @@ public class SwerveCombo {
         angleFinal *= angleConstant;
 
         this.driveMotor.set(ControlMode.Velocity, speed);
-        if (speed < 360) {
+        if (speed < 120) {
             this.axisMotor.set(ControlMode.Velocity, 0);
             this.driveMotor.set(ControlMode.Velocity, 0);
         } else {

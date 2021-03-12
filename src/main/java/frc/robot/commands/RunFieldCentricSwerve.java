@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.math.SigmoidGenerator;
 import frc.robot.subsystems.Chassis;
 
 import static frc.robot.RobotContainer.mController;
@@ -21,6 +22,9 @@ public class RunFieldCentricSwerve extends CommandBase {
     private SlewRateLimiter fwdLimiter = new SlewRateLimiter(4.5);
     private SlewRateLimiter strLimiter = new SlewRateLimiter(4.5);
     private SlewRateLimiter rotLimiter = new SlewRateLimiter(4.5);
+
+    private SigmoidGenerator responseCurve = new SigmoidGenerator(1.0);
+
     public double angle = mChassis.ahrs.getAngle();
 
     @Override
@@ -28,14 +32,18 @@ public class RunFieldCentricSwerve extends CommandBase {
 
         angle = -(mChassis.ahrs.getAngle() % 360);
 
-        System.out.println(angle);
+
+
+        double axis0 = responseCurve.calculate(mController.getRawAxis(0));
+        double axis1 = responseCurve.calculate(mController.getRawAxis(1));
+        double axis4 = responseCurve.calculate(mController.getRawAxis(4));
+
+        System.out.println(axis1);
 
 
         try {
-            mChassis.runSwerve(fwdLimiter.calculate(mController.getRawAxis(1)*cos(angle/360*(2*PI)) + mController.
-                            getRawAxis(0)*sin(angle/360*(2*PI))),
-                    strLimiter.calculate(mController.getRawAxis(1)*sin(angle/360*(2*PI)) - mController.
-                            getRawAxis(0)*cos(angle/360*(2*PI))),
+            mChassis.runSwerve(fwdLimiter.calculate(axis1*cos(angle/360*(2*PI)) + axis0*sin(angle/360*(2*PI))),
+                    strLimiter.calculate(axis1*sin(angle/360*(2*PI)) - axis0*cos(angle/360*(2*PI))),
                     rotLimiter.calculate(mController.getRawAxis(4)));
         } catch (Exception e) {
             e.printStackTrace();
