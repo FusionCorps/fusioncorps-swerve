@@ -1,10 +1,9 @@
 package frc.robot.modules;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
+import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.sensors.CANCoder;
+import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import frc.robot.Constants;
 import frc.robot.math.SwerveCalcs;
 
@@ -17,16 +16,27 @@ public class SwerveCombo {
     WPI_TalonFX axisMotor;
     WPI_TalonFX driveMotor;
     int mPosition;
+    double jankCode;
+    double absEncDeg;
+    CANCoder coder;
 
-    public SwerveCombo(WPI_TalonFX axisInit, WPI_TalonFX driveInit, int position) {
+    // Note: Phoenix Lib init knocks motors out of alignment
+    // Wait until you see that on the console before running, else realign
+
+    public SwerveCombo(WPI_TalonFX axisInit, WPI_TalonFX driveInit, CANCoder coderInit, int position) {
 
         new Constants();
 
+        this.coder = coderInit;
+
+        this.absEncDeg = (int) 0;
+
         this.axisMotor = axisInit;
-        this.axisMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
         this.axisMotor.setInverted(TalonFXInvertType.Clockwise);
-        this.axisMotor.configNeutralDeadband(0.05);
-        this.axisMotor.setSelectedSensorPosition(0);
+        this.axisMotor.configNeutralDeadband(0.0001);
+        this.axisMotor.configSelectedFeedbackSensor(FeedbackDevice.valueOf(1));
+
+        this.axisMotor.setSelectedSensorPosition(-(this.absEncDeg/360)*2048*STEERING_RATIO);
         this.axisMotor.config_kF(0, Constants.AXIS_kF);
         this.axisMotor.config_kP(0, Constants.AXIS_kP);
         this.axisMotor.config_kI(0, Constants.AXIS_kI);
@@ -46,10 +56,12 @@ public class SwerveCombo {
 
         this.mPosition = position;
 
+
     }
 
 
     public void passArgs(double speed, double angle) {
+
 
         new Constants();
 
@@ -84,6 +96,12 @@ public class SwerveCombo {
             this.axisMotor.set(ControlMode.Position, angleFinal);
             this.driveMotor.set(ControlMode.Velocity, speed);
         }
+    }
+
+    public void zero() {
+        absEncDeg = this.coder.getAbsolutePosition();
+        this.axisMotor.setSelectedSensorPosition(-(absEncDeg/360)*2048*STEERING_RATIO);
+        this.axisMotor.set(ControlMode.Velocity, 0);
     }
 
 

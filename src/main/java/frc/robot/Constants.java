@@ -12,14 +12,14 @@ public class Constants {
     public static double MAX_SPEED = 3.2;
 
     public static double AXIS_kF = 0.0;
-    public static double AXIS_kP = 0.15;
+    public static double AXIS_kP = 0.07;
     public static double AXIS_kI = 0.0;
-    public static double AXIS_kD = 0.4;
+    public static double AXIS_kD = 0.30;
 
     public static double DRIVE_kF = 0.0;
-    public static double DRIVE_kP = 0.1;
+    public static double DRIVE_kP = 0.07;
     public static double DRIVE_kI = 0.0;
-    public static double DRIVE_kD = 0.4;
+    public static double DRIVE_kD = 0.60;
 
     public static double STEERING_RATIO = 12.8;
     public static double DRIVING_RATIO = 6.86;

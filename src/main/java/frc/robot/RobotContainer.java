@@ -11,7 +11,6 @@ public class RobotContainer {
     public static final Chassis mChassis = new Chassis();
     public static final XboxController mController = new XboxController(0);
 
-    private static final XboxController pController = new XboxController(0);
 
 
 
@@ -19,7 +18,7 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureButtonBindings();
-        System.out.println("Container Initialized");
+
 
         mChassis.setDefaultCommand(new RunFieldCentricSwerve(mChassis));
 
@@ -29,8 +28,10 @@ public class RobotContainer {
 
     private void configureButtonBindings() {
         new JoystickButton(mController, XboxController.Button.kB.value)
-                .whenPressed((Command) new ResetGyro(mChassis));
-        System.out.println("Buttons set");
+                .whenPressed(new ResetGyro(mChassis));
+        new JoystickButton(mController, XboxController.Button.kA.value)
+                .whileHeld(new ZeroAxes(mChassis));
+
     }
 
 

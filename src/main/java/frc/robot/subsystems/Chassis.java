@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.sensors.CANCoder;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -26,20 +27,29 @@ public class Chassis extends SubsystemBase {
     WPI_TalonFX axis2 = new WPI_TalonFX(1);
     WPI_TalonFX axis3 = new WPI_TalonFX(5);
 
-    SwerveCombo comboFL = new SwerveCombo(axis0, drive0, 0);
-    SwerveCombo comboBL = new SwerveCombo(axis1, drive1, 1);
-    SwerveCombo comboFR = new SwerveCombo(axis2, drive2, 2);
-    SwerveCombo comboBR = new SwerveCombo(axis3, drive3, 3);
+    CANCoder coder0 = new CANCoder(12); // FL
+    CANCoder coder1 = new CANCoder(10); // BL
+    CANCoder coder2 = new CANCoder(11); // FR
+    CANCoder coder3 = new CANCoder(13); // BR
+
+
+    public SwerveCombo comboFL;
+    public SwerveCombo comboBL;
+    public SwerveCombo comboFR;
+    public SwerveCombo comboBR;
 
     public static AHRS ahrs;
 
 
 
     public Chassis() {
-        System.out.println("Chassis Created");
-
         ahrs = new AHRS(SPI.Port.kMXP);
         ahrs.calibrate();
+
+        comboFL = new SwerveCombo(axis0, drive0, coder0, 0);
+        comboBL = new SwerveCombo(axis1, drive1, coder1, 1);
+        comboFR = new SwerveCombo(axis2, drive2, coder2, 2);
+        comboBR = new SwerveCombo(axis3, drive3, coder3, 3);
     }
 
 
@@ -69,10 +79,10 @@ public class Chassis extends SubsystemBase {
             ratio = 1.0;
         }
 
-        this.comboFL.passArgs(ratio*getSpeed(fwd, str, rot, 0), getAngle(fwd, str, rot, 0));
-        this.comboBL.passArgs(ratio*getSpeed(fwd, str, rot, 1), getAngle(fwd, str, rot, 1));
-        this.comboFR.passArgs(ratio*getSpeed(fwd, str, rot, 2), getAngle(fwd, str, rot, 2));
-        this.comboBR.passArgs(ratio*getSpeed(fwd, str, rot, 3), getAngle(fwd, str, rot, 3));
+        this.comboFL.passArgs(ratio*speedFL, getAngle(fwd, str, rot, 0));
+        this.comboBL.passArgs(ratio*speedBL, getAngle(fwd, str, rot, 1));
+        this.comboFR.passArgs(ratio*speedFR, getAngle(fwd, str, rot, 2));
+        this.comboBR.passArgs(ratio*speedBR, getAngle(fwd, str, rot, 3));
 
 
 

@@ -28,6 +28,14 @@ public class RunFieldCentricSwerve extends CommandBase {
     public double angle = mChassis.ahrs.getAngle();
 
     @Override
+    public void initialize() {
+        mChassis.comboFR.zero();
+        mChassis.comboBR.zero();
+        mChassis.comboFL.zero();
+        mChassis.comboBL.zero();
+    }
+
+    @Override
     public void execute() {
 
         angle = -(mChassis.ahrs.getAngle() % 360);
@@ -38,15 +46,20 @@ public class RunFieldCentricSwerve extends CommandBase {
         double axis1 = responseCurve.calculate(mController.getRawAxis(1));
         double axis4 = responseCurve.calculate(mController.getRawAxis(4));
 
-        System.out.println(axis1);
 
 
+//        try {
+//            mChassis.runSwerve(fwdLimiter.calculate(axis1*cos(angle/360*(2*PI)) + axis0*sin(angle/360*(2*PI))),
+//                    strLimiter.calculate(axis1*sin(angle/360*(2*PI)) - axis0*cos(angle/360*(2*PI))),
+//                    rotLimiter.calculate(mController.getRawAxis(4)));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         try {
             mChassis.runSwerve(fwdLimiter.calculate(axis1*cos(angle/360*(2*PI)) + axis0*sin(angle/360*(2*PI))),
                     strLimiter.calculate(axis1*sin(angle/360*(2*PI)) - axis0*cos(angle/360*(2*PI))),
                     rotLimiter.calculate(mController.getRawAxis(4)));
         } catch (Exception e) {
-            e.printStackTrace();
         }
 //        System.out.println("Trying to drive");
     }
