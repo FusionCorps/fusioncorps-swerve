@@ -98,7 +98,7 @@ public class Chassis extends SubsystemBase {
         SwerveDriveKinematics.normalizeWheelSpeeds(desiredStates, Constants.MAX_SPEED);
 
         for(SwerveCombo mod : combos){
-            // mod.setDesiredState(desiredStates[mod.mPosition], false);
+            mod.setDesiredState(desiredStates[mod.mPosition]);
         }
 
     }

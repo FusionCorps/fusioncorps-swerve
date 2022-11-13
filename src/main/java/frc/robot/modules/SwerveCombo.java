@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.sensors.CANCoder;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
+import edu.wpi.first.wpilibj.kinematics.SwerveModuleState;
 import frc.robot.Constants;
 import frc.robot.math.SwerveCalcs;
 
@@ -104,6 +105,40 @@ public class SwerveCombo {
         this.axisMotor.set(ControlMode.Velocity, 0);
     }
 
+    public void setDesiredState(SwerveModuleState desiredState) {
+        new Constants();
+
+        double encAngle = axisMotor.getSelectedSensorPosition()/STEERING_RATIO/2048*(2*PI);
+        double driveConstant = 204.8/(2*PI)*DRIVING_RATIO/WHEEL_RADIUS_METERS;
+        double angleConstant = 2048/(2*PI)*STEERING_RATIO;
+
+        double speed = desiredState.speedMetersPerSecond;
+        double angle = desiredState.angle.getRadians();
+
+        speed *= driveConstant;
+
+        double encTrue = encAngle%(2*PI);
+
+        double dTheta = angle - encTrue;
+
+        if (abs(-2*PI + dTheta) < abs(dTheta)) {
+            if (abs(-2*PI + dTheta) < abs(2*PI + dTheta)) {
+                dTheta = -2*PI + dTheta;
+            } else {
+                dTheta = 2*PI + dTheta;
+            }
+        } else if (abs(dTheta) > abs(2*PI + dTheta)) {
+            dTheta = 2*PI + dTheta;
+        }
+
+        double angleFinal = encAngle + dTheta;
+        angleFinal *= angleConstant;
+
+        this.driveMotor.set(ControlMode.Velocity, speed);
+        this.axisMotor.set(ControlMode.Position, angleFinal);
+
+        }
+    }
 
 
 
