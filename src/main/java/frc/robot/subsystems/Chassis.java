@@ -4,6 +4,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.sensors.CANCoder;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.wpilibj.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.RunSwerveJoystick;
@@ -38,6 +40,8 @@ public class Chassis extends SubsystemBase {
     public SwerveCombo comboFR;
     public SwerveCombo comboBR;
 
+    public SwerveCombo[] combos;
+
     public static AHRS ahrs;
 
 
@@ -50,6 +54,8 @@ public class Chassis extends SubsystemBase {
         comboBL = new SwerveCombo(axis1, drive1, coder1, 1);
         comboFR = new SwerveCombo(axis2, drive2, coder2, 2);
         comboBR = new SwerveCombo(axis3, drive3, coder3, 3);
+
+        combos = new SwerveCombo[] {comboFL, comboBL, comboFR, comboFR};
     }
 
 
@@ -85,6 +91,15 @@ public class Chassis extends SubsystemBase {
         this.comboBR.passArgs(ratio*speedBR, getAngle(fwd, str, rot, 3));
 
 
+
+    }
+
+    public void setModuleStates(SwerveModuleState[] desiredStates) {
+        SwerveDriveKinematics.normalizeWheelSpeeds(desiredStates, Constants.MAX_SPEED);
+
+        for(SwerveCombo mod : combos){
+            // mod.setDesiredState(desiredStates[mod.mPosition], false);
+        }
 
     }
 

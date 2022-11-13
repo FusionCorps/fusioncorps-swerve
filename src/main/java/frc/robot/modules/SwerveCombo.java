@@ -15,7 +15,7 @@ public class SwerveCombo {
 
     WPI_TalonFX axisMotor;
     WPI_TalonFX driveMotor;
-    int mPosition;
+    public int mPosition;
     double jankCode;
     double absEncDeg;
     CANCoder coder;
