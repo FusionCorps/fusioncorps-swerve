@@ -109,7 +109,12 @@ public class SwerveCombo {
         new Constants();
 
         double encAngle = axisMotor.getSelectedSensorPosition()/STEERING_RATIO/2048*(2*PI);
-        double driveConstant = 204.8/(2*PI)*DRIVING_RATIO/WHEEL_RADIUS_METERS;
+
+        // velo needs to be ticks per second
+        // m/s * gearing * rad/m * ticks/rad
+        // m/s * DRIVING_RATIO * 1/R * 2048 / 2PI
+
+        double driveConstant = 2048/(2*PI)*DRIVING_RATIO/WHEEL_RADIUS_METERS;
         double angleConstant = 2048/(2*PI)*STEERING_RATIO;
 
         double speed = desiredState.speedMetersPerSecond;
@@ -137,7 +142,7 @@ public class SwerveCombo {
         this.driveMotor.set(ControlMode.Velocity, speed);
         this.axisMotor.set(ControlMode.Position, angleFinal);
 
-        
+
     }
 
 
